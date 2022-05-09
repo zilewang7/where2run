@@ -1,0 +1,7 @@
+.slider {
+    text-align: center;
+    height: 250px;
+    line-height: 250px;
+    background: linear-gradient(90deg, #00d0d4 19%, #00c5c3 58%, #9effa4 100%) !important;
+    overflow: hidden;
+}
