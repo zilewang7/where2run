@@ -1,7 +1,7 @@
 import { Row, Col, Typography } from 'antd';
 import React from 'react';
 import styles from './App.module.css';
-import { Header, Footer, SideMenu, Carousel, ProductCollection } from './components';
+import { Header, Footer, SideMenu, Carousel, ProductCollection, CovidMap, Rank, covidData, CovidData } from './components';
 import { productList1, productList2, productList3 } from './mockups';
 
 import sideImage from './assets/images/sider_2019_12-09.png';
@@ -36,6 +36,9 @@ function App() {
           products={productList3}
         />
       </main>
+      <CovidMap />
+      <>
+        {Rank(covidData as unknown as CovidData)}</>
       <Footer />
     </div >
   );
