@@ -5,7 +5,7 @@ import styles from "./Footer.module.css"
 export const Footer: React.FC = () => {
 
     return (
-        <Layout.Footer>
+        <Layout.Footer className={styles.Footer}>
             <Typography.Title level={3} style={{ textAlign: 'center' }}>
                 嗨呀，西方这是怎么会是，还是八润了
             </Typography.Title>
