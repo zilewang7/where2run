@@ -3,6 +3,7 @@ import styles from "./CovidMap.module.css";
 // import { covidData as testData } from "./testData";
 import { useRank, Data } from "./useRank";
 import { Divider, Typography, Table } from "antd";
+import { GithubOutlined } from "@ant-design/icons";
 
 const { Column, ColumnGroup } = Table;
 
@@ -74,9 +75,9 @@ export const CovidMap: React.FC = () => {
                             <Column title="累计死亡" dataIndex="total_deaths" key="total_deaths" />
                         </ColumnGroup>
                     </Table>
-
                 </>
             }
+            <p>数据来源: <GithubOutlined /> <a href="https://github.com/owid/covid-19-data">COVID-19 Dataset by Our World in Data</a></p>
         </div>
     )
 };
