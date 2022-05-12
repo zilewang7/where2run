@@ -1,20 +1,19 @@
 import React from 'react';
 import styles from './App.module.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages";
 
 function App() {
   return (
     <div className={styles.App}>
+      <HomePage />
       {/* <BrowserRouter>
-        <Route path='/' element={<HomePage />} />
+        <Routes>
+          <Route path="/" element={<HomePage />}>
+            <Route index element={<HomePage />} />
+          </Route>
+        </Routes>
       </BrowserRouter> */}
-      {/* <HomePage /> */}
-      <Routes>
-        <Route path="/" element={<HomePage />}>
-          <Route index element={<HomePage />} />
-        </Route>
-      </Routes>
     </div >
   );
 }
