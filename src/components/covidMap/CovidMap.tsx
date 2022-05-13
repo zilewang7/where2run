@@ -10,7 +10,7 @@ const { Column, ColumnGroup } = Table;
 export const CovidMap: React.FC = () => {
 
     const [covidData, setCovidData] = useState<any>([]);
-    const [loading, setLoding] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('none');
 
     useEffect(() => {
@@ -21,8 +21,9 @@ export const CovidMap: React.FC = () => {
                 setCovidData(data);
             } catch (e: any) {
                 setError(e.message);
+                return;
             }
-            setLoding(false)
+            setLoading(false)
         };
         fetchCovidData();
     }, [])
