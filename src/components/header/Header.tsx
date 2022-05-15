@@ -3,9 +3,12 @@ import { Button, Dropdown, Input, Layout, Menu, Typography } from "antd";
 import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/icon/run.png';
+import { useNavigate, useLocation, useParams, Link } from 'react-router-dom'
 
 export const Header: React.FC = () => {
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const param = useParams();
     return (
         <div className={styles['app-header']} >
             <div className={styles['top-header']}>
@@ -25,14 +28,16 @@ export const Header: React.FC = () => {
                         语言
                     </Dropdown.Button>
                     <Button.Group className={styles['button-group']}>
-                        <Button>注册</Button>
-                        <Button>登录</Button>
+                        <Button onClick={() => { navigate('register') }}>注册</Button>
+                        <Button onClick={() => { navigate('signIn') }}>登录</Button>
                     </Button.Group>
                 </div>
             </div>
             <Layout.Header className={styles['main-header']}>
-                <img src={logo} alt="润" className={styles['App-logo']} />
-                <Typography.Title level={3} className={styles.title}> 润哪儿旅游网</Typography.Title>
+                <Link to='/'>
+                    <img src={logo} alt="润" className={styles['App-logo']} />
+                    <Typography.Title level={3} className={styles.title}> 润哪儿旅游网</Typography.Title>
+                </Link>
                 <Input.Search placeholder='往哪润？' className={styles['search-input']}>
                 </Input.Search>
             </Layout.Header>
