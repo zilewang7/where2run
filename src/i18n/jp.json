@@ -1,0 +1,30 @@
+{
+    "header": {
+        "slogan": "そろそろもういい",
+        "title": "どこへ行く",
+        "register": "注册",
+        "signin": "ログイン",
+        "where2run": "どこへ行く？",
+        "home_page": "旅行ホームページ",
+        "weekend": "週末ツアー",
+        "group": "ツアーをフォロー",
+        "backpack": "自由",
+        "private": "プライベートグループ",
+        "cruise": "クルーズ",
+        "hotel": "ホテル+アトラクション",
+        "local": "ローカルプレイ",
+        "theme": "テーマツアー",
+        "custom": "カスタマイズされたツアー",
+        "study": "研究",
+        "visa": "ビザ",
+        "enterprise": "エンタープライズツアー",
+        "high_end": "ハイエンドゲーム",
+        "outdoor": "屋外で遊",
+        "insurance": "保険"
+    },
+    "home_page": {
+        "hot_recommended": "推奨",
+        "new_arrival": "新着",
+        "domestic_travel": "国内"
+    }
+}

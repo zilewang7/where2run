@@ -1,0 +1,30 @@
+{
+    "header": {
+        "slogan": "Ah YEAN YEAN YEAN",
+        "title": "Where2Run",
+        "register": "Register",
+        "signin": "Sign In",
+        "where2run": "Where2Run?",
+        "home_page": "Home",
+        "weekend": "Weekend",
+        "group": "Group",
+        "backpack": "Backpack",
+        "private": "Private",
+        "cruise": "Cruise",
+        "hotel": "Hotel & Attractions",
+        "local": "Local",
+        "theme": "Theme",
+        "custom": "Custom",
+        "study": "Study",
+        "visa": "Visa",
+        "enterprise": "Enterprise",
+        "high_end": "High-end",
+        "outdoor": "Outdoor",
+        "insurance": "Insurance"
+    },
+    "home_page": {
+        "hot_recommended": "Hot Recommended",
+        "new_arrival": "New arrival",
+        "domestic_travel": "Domestic travel"
+    }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Typography } from 'antd';
 import { Header, Footer, SideMenu, Carousel, ProductCollection, CovidMap, } from '../../components';
 import { productList1, productList2, productList3 } from '../../pages/home/mockups';
+import { useTranslation } from 'react-i18next'
 
 import sideImage from '../../assets/images/sider_2019_12-09.png';
 import sideImage2 from '../../assets/images/sider_2019_02-04.png';
@@ -11,6 +12,7 @@ import styles from './HomePage.module.css';
 
 
 export const HomePage: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <>
             <Header />
@@ -24,16 +26,16 @@ export const HomePage: React.FC = () => {
                     </Col>
                 </Row>
                 <ProductCollection
-                    title={<Typography.Title level={3} type="warning">推荐</Typography.Title>}
+                    title={<Typography.Title level={3} type="warning">{t("home_page.hot_recommended")}</Typography.Title>}
                     sideImage={sideImage}
                     products={productList1}
                 />
                 <ProductCollection
-                    title={<Typography.Title level={3} type="danger">新品</Typography.Title>}
+                    title={<Typography.Title level={3} type="danger">{t("home_page.new_arrival")}</Typography.Title>}
                     sideImage={sideImage2}
                     products={productList2}
                 /><ProductCollection
-                    title={<Typography.Title level={3} type="success">国内</Typography.Title>}
+                    title={<Typography.Title level={3} type="success">{t("home_page.domestic_travel")}</Typography.Title>}
                     sideImage={sideImage3}
                     products={productList3}
                 />
