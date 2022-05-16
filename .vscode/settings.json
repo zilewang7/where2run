@@ -3,6 +3,8 @@
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"cSpell.words": [
 		"antd",
-		"reduxjs"
+		"icode",
+		"reduxjs",
+		"signin"
 	]
 }

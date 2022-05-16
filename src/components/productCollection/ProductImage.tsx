@@ -14,12 +14,16 @@ export const ProductImage: React.FC<Props> = ({ id, size, title, imageSrc, price
     return (
         <><Link to={`detail/${id}`}>
             {size === "large" ? (
-                <Image src={imageSrc} height={285} width={490} />
+                <Image src={imageSrc} width={'95%'} preview={false} />
             ) : (
-                <Image src={imageSrc} height={120} width={240} />
+                <Image src={imageSrc} width={'95%'} preview={false} />
             )}
             <div>
-                <Typography.Text type="secondary">{title.slice(0, 25)}</Typography.Text>
+                {size === "large" ? (
+                    <Typography.Text type="secondary">{title}</Typography.Text>
+                ) : (
+                    <Typography.Text type="secondary">{title.slice(0, 25)}</Typography.Text>
+                )}
                 <Typography.Text type="danger" strong>￥{price}</Typography.Text>
             </div>
         </Link>

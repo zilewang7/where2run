@@ -4,23 +4,24 @@ import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/icon/run.png';
 import { useNavigate, Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { languageState, changeLanguage } from "../../redux/languageReducer";
+import { changeLanguage } from "../../redux/language/languageReducer";
 import { useTranslation } from 'react-i18next'
+// import { RootState } from "../../redux/store";
+import { /*useSelector,*/ useDispatch } from 'react-redux'
+import { useSelector } from "../../redux/hooks";
 
-interface stateType {
-    language: languageState
-}
 
 export const Header: React.FC = () => {
-    const { t } = useTranslation();
     const navigate = useNavigate();
-    const language = useSelector((state: stateType) => state.language);
-    console.log(language)
+
     const dispatch = useDispatch()
+
+    const { t } = useTranslation();
+    const language = useSelector((state) => state.language);
     const languageChange = (e) => {
         dispatch(changeLanguage(e.key));
     }
+
     return (
         <div className={styles['app-header']} >
             <div className={styles['top-header']}>
@@ -53,13 +54,13 @@ export const Header: React.FC = () => {
                 <Input.Search placeholder={t("header.where2run")} className={styles['search-input']}>
                 </Input.Search>
             </Layout.Header>
-            <div className="menu-wrapper" style={{
-                display: "flex", justifyContent: 'center',
-                maxWidth: "100%",
-                background: "linear-gradient(90deg, #00d0d4 19%, #00c5c3 58%, #9effa4 100%)"
-            }}>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: 'center',
+                    background: "linear-gradient(90deg, #00d0d4 50%,  #9effa4 50%)"
+                }}>
                 <Menu mode={"horizontal"} className={styles["main-menu"]}>
-
                     <Menu.Item key="1">{t("header.home_page")}</Menu.Item>
                     <Menu.Item key="2">{t("header.weekend")}</Menu.Item>
                     <Menu.Item key="3">{t("header.group")}</Menu.Item>
