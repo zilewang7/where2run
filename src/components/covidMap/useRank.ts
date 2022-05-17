@@ -1,3 +1,5 @@
+
+
 export interface Data {
     key?: number,
     location: string,
@@ -11,6 +13,7 @@ export interface Data {
 
 export const useRank = () => {
     const getRank = (covidData) => {
+        if (!covidData) return []
         let rankTable: Data[] = [];
 
         Object.values(covidData).forEach((info: any, index) => {
@@ -53,3 +56,30 @@ export const useRank = () => {
     }
     return getRank;
 }
+
+// export const useRankedCovidData = () => {
+//     const { covidData } = useSelector((state) => state.covidDate);
+//     const [rankedCovidData, setRankedCovidData] = useState<any>()
+//     const [loading, setLoading] = useState(true);
+//     const dispatch = useDispatch()
+//     const getRank = useRank();
+//     const handleGetCovidData = useCallback(async () => {
+//         console.log('handle execute')
+//         await getCovidData(dispatch);
+
+//     }, [dispatch])
+
+//     // useEffect(() => {
+//     handleGetCovidData().then(() => {
+//         setRankedCovidData(getRank(covidData))
+//         console.log('covidData: ', covidData)
+//         setLoading(false)
+//     })
+//     // }, [covidData, getRank, handleGetCovidData])
+
+//     return {
+//         rankedCovidData,
+//         loading,
+//         error: null
+//     }
+// }

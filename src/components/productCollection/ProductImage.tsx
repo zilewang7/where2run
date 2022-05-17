@@ -14,9 +14,9 @@ export const ProductImage: React.FC<Props> = ({ id, size, title, imageSrc, price
     return (
         <><Link to={`detail/${id}`}>
             {size === "large" ? (
-                <Image src={imageSrc} width={'95%'} preview={false} />
+                <Image src={imageSrc} width={'95%'} />
             ) : (
-                <Image src={imageSrc} width={'95%'} preview={false} />
+                <Image src={imageSrc} width={'95%'} />
             )}
             <div>
                 {size === "large" ? (

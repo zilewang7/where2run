@@ -1,45 +1,126 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./CovidMap.module.css";
 // import { covidData as testData } from "./testData";
-import { useRank, Data } from "./useRank";
+import { Data, useRank } from "./useRank";
 import { Divider, Typography, Table, Spin } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
-import axios from "axios";
+import { fetchData, } from "../../redux/reducers/covidDataReducer";
+import { useDispatch } from "react-redux";
+// import { useSelector } from "../../redux/hooks";
 
 const { Column, ColumnGroup } = Table;
 
 export const CovidMap: React.FC = () => {
+    // const { rankedCovidData: rankData, loading, error } = useRankedCovidData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const dispatch = useCallback(useDispatch(), [])
+    // const { covidData, loading, error } = useSelector(state => (state as any).covidDate);
+    // console.log('init', 'CovidData', covidData, 'loading', loading, 'error', error);
+    // new Promise(()=>{
+    //     (dispatch as any)(GetData())
+    // }).finally(() => {
+    //     const getRank = useRank()
+    // const rankData = getRank(covidData)
+    // });
 
-    const [covidData, setCovidData] = useState<any>([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const getRank = useCallback(useRank(), [])
+
+    const [rankData, setRankData] = useState<any>();
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string>('none');
+    const [error, setError] = useState<string | null>(null);
+
+
+    // useEffect(() => {
+
+    //     console.log('useEffect', 'CovidData', covidData, 'loading', loading, 'error', error)
+    //     if (covidData) {
+    //         setRankData(getRank(covidData))
+    //     }
+    // }, [covidData, getRank])
+
+    // const getRank = useRank()
+
+
+    // useEffect(() => {
+    //     (dispatch as any)(GetData()).then(() => {
+    //         console.log('useEffect', 'CovidData', covidData, 'loading', loading, 'error', error);
+
+    //         setRankData(getRank(covidData))
+    //     })
+    // }, [covidData, dispatch, error, getRank, loading])
 
     useEffect(() => {
-        const fetchCovidData = async () => {
-            try {
-                // const covidData = await fetch("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json");
-                // const data = await covidData.json();
-                const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json",
-                    {
-                        headers: {},
-                    })
-                setCovidData(data);
-            } catch (e: any) {
-                setError(e.message);
-                return;
-            }
-            setLoading(false)
-        };
-        fetchCovidData();
-    }, [])
+        (dispatch as any)(fetchData())
+            .unwrap()
+            .then((originalPromiseResult) => {
+                console.log('originalPromiseResult', originalPromiseResult)
+                // dispatch(setCovidData(originalPromiseResult));
+                setRankData(getRank(originalPromiseResult));
+                setLoading(false)
+                // handle result here
+            })
+            .catch((rejectedValueOrSerializedError) => {
+                console.log(rejectedValueOrSerializedError)
+                setLoading(false)
+                setError(rejectedValueOrSerializedError.message);
 
-    const getRank = useRank();
-    const rankData = getRank(covidData);
+                // handle error here
+            })
+    }, [dispatch, getRank]);
+
+
+
+
+
+    // console.log('dispatch', 'CovidData', covidData, 'loading', loading, 'error', error)
+
+    // console.log('rankData', rankData)
+
+
+
+    // dispatch()
+
+    // const [covidData, setCovidData] = useState<any>([]);
+    // const [loading, setLoading] = useState<boolean>(true);
+    // const [error, setError] = useState<string>('none');
+
+    // useEffect(() => {
+    //     const fetchCovidData = async () => {
+    //         try {
+    //             // const covidData = await fetch("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json");
+    //             // const data = await covidData.json();
+    //             const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json",
+    //                 {
+    //                     headers: {},
+    //                 })
+    //             setCovidData(data);
+    //         } catch (e: any) {
+    //             setError(e.message);
+    //             return;
+    //         }
+    //         setLoading(false)
+    //     };
+    //     fetchCovidData();
+    // }, [])
+
+    // const getRank = useRank();
+    // let rankData = useRef<any>();
+
+    // useEffect(() => {
+    //     if (covidData) {
+    //         rankData.current = getRank(covidData);
+    //     }
+    // }, [covidData, getRank])
+
+    // if (loading) {
+    //     return <>ni kan ni ma ne</>
+    // }
 
     return (
         <div className={styles.content}>
             <Divider><Typography.Title type="danger">疫情现状</Typography.Title></Divider>
-            {(error !== 'none') ? <><h2>数据获取出错</h2><p>{error}</p></> : <>
+            {(error !== null) ? <><h2>数据获取出错</h2><p>{error}</p></> : <>
                 {loading ? <Spin size="large" /> :
                     <>
                         <Table
