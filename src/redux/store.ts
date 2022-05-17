@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 // import { createStore } from 'redux'
 import languageReducer from './reducers/languageReducer';
 import covidDataReducer from './reducers/covidDataReducer';
-import { Store } from 'antd/lib/form/interface';
 
 export const store = configureStore({
     reducer: {
@@ -12,4 +11,4 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = ReturnType<typeof store.dispatch>

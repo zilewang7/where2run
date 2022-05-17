@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { } from "react";
 import { Row, Col, Typography } from 'antd';
 import { Header, Footer, SideMenu, Carousel, ProductCollection, CovidMap, } from '../../components';
 import { productList1, productList2, productList3 } from '../../pages/home/mockups';
@@ -9,28 +9,10 @@ import sideImage2 from '../../assets/images/sider_2019_02-04.png';
 import sideImage3 from '../../assets/images/sider_2019_02-04-2.png';
 
 import styles from './HomePage.module.css';
-import axios from "axios";
 
 
 export const HomePage: React.FC = () => {
     const { t } = useTranslation();
-
-    const [data, setData] = useState<any>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string>('none');
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get("")
-                setData(data);
-            } catch (e: any) {
-                setError(e.message);
-                return;
-            }
-            setLoading(false)
-        };
-        // fetchData();
-    })
 
     return (
         <>
