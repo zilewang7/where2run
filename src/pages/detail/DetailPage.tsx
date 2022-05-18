@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./DetailPage.module.css"
 import { useParams } from 'react-router-dom'
 import { Footer, Header, ProductComments, ProductIntro } from "../../components";
-import { Row, Col, Divider, Typography, Image, Anchor, Menu, Button } from "antd";
+import { Row, Col, Divider, Typography, Anchor, Button } from "antd";
 import { DatePicker } from 'antd';
 
 import PNG1 from "../../assets/detailImg/1.png"
@@ -13,6 +13,7 @@ import TS from "../../assets/detailImg/ts.png"
 import { commentMockData } from "./mockup";
 
 
+const { Link } = Anchor;
 const { RangePicker } = DatePicker;
 
 
@@ -47,21 +48,12 @@ export const DetailPage: React.FC = (props) => {
 
                     </Col>
                 </Row>
+
                 <Anchor className={styles["product-detail-anchor"]}>
-                    <Menu mode="horizontal">
-                        <Menu.Item key="1">
-                            <Anchor.Link href="#feature" title="产品特色"></Anchor.Link>
-                        </Menu.Item>
-                        <Menu.Item key="3">
-                            <Anchor.Link href="#fees" title="费用"></Anchor.Link>
-                        </Menu.Item>
-                        <Menu.Item key="4">
-                            <Anchor.Link href="#notes" title="预订须知"></Anchor.Link>
-                        </Menu.Item>
-                        <Menu.Item key="5">
-                            <Anchor.Link href="#comments" title="用户评价"></Anchor.Link>
-                        </Menu.Item>
-                    </Menu>
+                    <Link href="#feature" title="产品特色" />
+                    <Link href="#fees" title="费用" />
+                    <Link href="#notes" title="须知" />
+                    <Link href="#comments" title="评论" />
                 </Anchor>
 
                 <div id="feature" className={styles["product-detail-container1"]}>
