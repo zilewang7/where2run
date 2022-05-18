@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "../App";
 import { DetailPage, HomePage, RegisterPage, SignInPage } from "../pages";
 
 //引入路由组件
@@ -18,7 +17,7 @@ export const Router = () => {
                     <Route path="signIn" element={<SignInPage />} />
                     <Route path="register" element={<RegisterPage />} />
                 </Route> */}
-                <Route path="/" element={<App />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="test" element={<h1>test</h1>} />
                 <Route path="signIn" element={<SignInPage />} />
                 <Route path="register" element={<RegisterPage />} />
