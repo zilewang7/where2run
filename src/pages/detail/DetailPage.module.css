@@ -12,7 +12,13 @@
 
 .product-detail-anchor {
     margin-top: 20px;
-    margin-bottom: 20px;
+}
+
+.product-detail-container1 {
+    background: white;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .product-detail-container {

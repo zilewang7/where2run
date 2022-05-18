@@ -64,7 +64,7 @@ export const DetailPage: React.FC = (props) => {
                     </Menu>
                 </Anchor>
 
-                <div id="feature" className={styles["product-detail-container"]}>
+                <div id="feature" className={styles["product-detail-container1"]}>
                     <Divider orientation={"center"}><Typography.Title level={3}>产品特色</Typography.Title></Divider>
                     <img src={TS} alt="" style={{ display: "block", margin: "0 auto" }} />
                 </div>
