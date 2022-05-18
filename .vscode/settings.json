@@ -3,9 +3,11 @@
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"cSpell.words": [
 		"antd",
+		"browserslist",
 		"icode",
 		"middlewares",
 		"reduxjs",
-		"signin"
+		"signin",
+		"wdnmd"
 	]
 }

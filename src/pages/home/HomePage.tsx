@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Typography } from 'antd';
 import { Header, Footer, SideMenu, Carousel, ProductCollection, CovidMap, } from '../../components';
 import { productList1, productList2, productList3 } from '../../pages/home/mockups';
@@ -13,7 +13,10 @@ import styles from './HomePage.module.css';
 
 export const HomePage: React.FC = () => {
     const { t } = useTranslation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
 
+    }, []);
     return (
         <>
             <Header />

@@ -5,3 +5,4 @@ export * from "./carousel";
 export * from "./productCollection";
 export * from "./covidMap";
 export * from "./productIntro"
+export * from "./productComments"

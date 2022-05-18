@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./DetailPage.module.css"
 import { useParams } from 'react-router-dom'
-import { Footer, Header, ProductIntro } from "../../components";
-import { Row, Col } from "antd";
+import { Footer, Header, ProductComments, ProductIntro } from "../../components";
+import { Row, Col, Divider, Typography, Image, Anchor, Menu, Button } from "antd";
 import { DatePicker } from 'antd';
 
 import PNG1 from "../../assets/detailImg/1.png"
 import PNG2 from "../../assets/detailImg/2.png"
 import PNG3 from "../../assets/detailImg/3.png"
 import PNG4 from "../../assets/detailImg/4.png"
+import TS from "../../assets/detailImg/ts.png"
+import { commentMockData } from "./mockup";
+
 
 const { RangePicker } = DatePicker;
 
@@ -18,6 +21,10 @@ const picSrc = [PNG1, PNG2, PNG3, PNG4];
 
 export const DetailPage: React.FC = (props) => {
     const id = Object.values(useParams());
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+    }, []);
     return (
         <>
             <Header />
@@ -35,13 +42,57 @@ export const DetailPage: React.FC = (props) => {
                         rating={"5.0"}
                         pictures={picSrc}
                     /></Col>
-                    <Col span={11}><RangePicker open style={{ marginTop: 20 }} /></Col>
+                    <Col span={11}><RangePicker open style={{ marginTop: 20 }} />
+                        <div style={{ marginTop: "80%", marginLeft: "65%" }}><Button size="large">立即购买</Button></div>
+
+                    </Col>
                 </Row>
-                <div className={styles["product-detail-anchor"]}></div>
-                <div id="feature" className={styles["product-detail-container"]}></div>
-                <div id="fees" className={styles["product-detail-container"]}></div>
-                <div id="notes" className={styles["product-detail-container"]}></div>
-                <div id="comments" className={styles["product-detail-container"]}></div>
+                <Anchor className={styles["product-detail-anchor"]}>
+                    <Menu mode="horizontal">
+                        <Menu.Item key="1">
+                            <Anchor.Link href="#feature" title="产品特色"></Anchor.Link>
+                        </Menu.Item>
+                        <Menu.Item key="3">
+                            <Anchor.Link href="#fees" title="费用"></Anchor.Link>
+                        </Menu.Item>
+                        <Menu.Item key="4">
+                            <Anchor.Link href="#notes" title="预订须知"></Anchor.Link>
+                        </Menu.Item>
+                        <Menu.Item key="5">
+                            <Anchor.Link href="#comments" title="用户评价"></Anchor.Link>
+                        </Menu.Item>
+                    </Menu>
+                </Anchor>
+
+                <div id="feature" className={styles["product-detail-container"]}>
+                    <Divider orientation={"center"}><Typography.Title level={3}>产品特色</Typography.Title></Divider>
+                    <img src={TS} alt="" style={{ display: "block", margin: "0 auto" }} />
+                </div>
+                <div id="fees" className={styles["product-detail-container"]}>
+                    <Divider orientation={"center"}><Typography.Title level={3}>费用明细</Typography.Title></Divider>
+                    <p style={{ margin: "3%" }}>费用明细是怎么回事呢？费用相信大家都很熟悉，但是明细是怎么回事呢？下面就让小编带大家一起了解吧。
+                        费用明细，其实就是明细了。那么费用为什么会明细，相信大家都很好奇是怎么回事。大家可能会感到很惊讶，费用怎么会明细呢？但事实就是这样，小编也感到非常惊讶。那么这就是关于费用明细的事情了，大家有没有觉得很神奇呢？
+                        费用明细是怎么回事呢？费用相信大家都很熟悉，但是明细是怎么回事呢？下面就让小编带大家一起了解吧。
+                        费用明细，其实就是明细了。那么费用为什么会明细，相信大家都很好奇是怎么回事。大家可能会感到很惊讶，费用怎么会明细呢？但事实就是这样，小编也感到非常惊讶。那么这就是关于费用明细的事情了，大家有没有觉得很神奇呢？
+                        费用明细是怎么回事呢？费用相信大家都很熟悉，但是明细是怎么回事呢？下面就让小编带大家一起了解吧。
+                        费用明细，其实就是明细了。那么费用为什么会明细，相信大家都很好奇是怎么回事。大家可能会感到很惊讶，费用怎么会明细呢？但事实就是这样，小编也感到非常惊讶。那么这就是关于费用明细的事情了，大家有没有觉得很神奇呢？
+                    </p>
+                </div>
+                <div id="notes" className={styles["product-detail-container"]}>
+                    <Divider orientation={"center"}><Typography.Title level={3}>游前须知</Typography.Title></Divider>
+                    <p style={{ margin: "3%" }}>游前须知是怎么回事呢？游前相信大家都很熟悉，但是须知是怎么回事呢？下面就让小编带大家一起了解吧。
+                        游前须知，其实就是须知了。那么游前为什么会须知，相信大家都很好奇是怎么回事。大家可能会感到很惊讶，游前怎么会须知呢？但事实就是这样，小编也感到非常惊讶。那么这就是关于游前须知的事情了，大家有没有觉得很神奇呢？
+                        看了今天的内容，大家有什么想法呢？欢迎在评论区告诉小编一起讨论哦。
+                        游前须知是怎么回事呢？游前相信大家都很熟悉，但是须知是怎么回事呢？下面就让小编带大家一起了解吧。
+                        游前须知，其实就是须知了。那么游前为什么会须知，相信大家都很好奇是怎么回事。大家可能会感到很惊讶，游前怎么会须知呢？但事实就是这样，小编也感到非常惊讶。那么这就是关于游前须知的事情了，大家有没有觉得很神奇呢？
+                        看了今天的内容，大家有什么想法呢？欢迎在评论区告诉小编一起讨论哦。
+                    </p>
+                </div>
+                <div id="comments" className={styles["product-detail-container"]}>
+                    <Divider orientation={"left"}><Typography.Title level={3}>评论</Typography.Title></Divider>
+                    <div style={{ marginLeft: "5%", marginRight: "5%" }}><ProductComments data={commentMockData} /></div>
+
+                </div>
             </div>
             <Footer />
         </>
