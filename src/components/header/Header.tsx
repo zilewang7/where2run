@@ -51,7 +51,11 @@ export const Header: React.FC = () => {
                     <img src={logo} alt="润" className={styles['App-logo']} />
                     <Typography.Title level={3} className={styles.title}> {t("header.title")}</Typography.Title>
                 </Link>
-                <Input.Search placeholder={t("header.where2run")} className={styles['search-input']}>
+                <Input.Search
+                    placeholder={t("header.where2run")}
+                    className={styles['search-input']}
+                    onSearch={(keywords) => { navigate(`/search/${keywords}`) }}
+                >
                 </Input.Search>
             </Layout.Header>
             <div

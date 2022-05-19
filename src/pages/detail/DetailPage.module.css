@@ -5,6 +5,11 @@
     min-height: 75vh;
 }
 
+.product-intro-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
 
 .product-detail-anchor {
     margin-top: 20px;
@@ -29,8 +34,7 @@
 
 
 .product-detail-anchor {
-    margin-top: 40px;
-    margin-left: 0;
+    margin: 0;
 }
 
 .product-detail-anchor :global(.ant-anchor-link) {
@@ -49,6 +53,8 @@
     list-style: none;
     font-feature-settings: 'tnum';
     position: relative;
+
+    border-bottom: 1px solid gray;
 }
 
 .product-detail-anchor :global(.ant-anchor-wrapper) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { DetailPage, HomePage, RegisterPage, SignInPage } from "../pages";
+import { DetailPage, HomePage, RegisterPage, SearchPage, SignInPage } from "../pages";
 
 //引入路由组件
 // BrowserRouter相当于路由模式中的history模式，可以让ur1不带#
@@ -22,6 +22,8 @@ export const Router = () => {
                 <Route path="signIn" element={<SignInPage />} />
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="detail/:id" element={<DetailPage />} />
+                <Route path="search" element={<SearchPage />} />
+                <Route path="search/:keywords" element={<SearchPage />} />
                 <Route path="*" element={<h2>迷路了？<a href="/">回到首页</a></h2>} ></Route>
             </Routes>
         </BrowserRouter>
