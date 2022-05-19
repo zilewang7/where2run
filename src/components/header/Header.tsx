@@ -1,5 +1,4 @@
-import { GlobalOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Input, Layout, Menu, Typography } from "antd";
+import { Input, Layout, Menu, Typography } from "antd";
 import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/icon/run.png';
@@ -9,6 +8,11 @@ import { useTranslation } from 'react-i18next'
 // import { RootState } from "../../redux/store";
 import { /*useSelector,*/ useDispatch } from 'react-redux'
 import { useSelectorWithType } from "../../redux/hooks";
+import { HeaderOfHeader } from "./HeaderOfHeader";
+
+
+
+
 
 
 export const Header: React.FC = () => {
@@ -24,28 +28,7 @@ export const Header: React.FC = () => {
 
     return (
         <div className={styles['app-header']} >
-            <div className={styles['top-header']}>
-                <div className={styles.inner}>
-                    <Typography.Text>{t("header.slogan")}</Typography.Text>
-                    <Dropdown.Button
-                        style={{ marginLeft: 15 }}
-                        overlay={
-                            <Menu onClick={languageChange}>
-                                {language.languageList.map(l => {
-                                    return <Menu.Item key={l.code}>{l.name}</Menu.Item>
-                                })}
-                            </Menu>
-                        }
-                        icon={<GlobalOutlined />}
-                    >
-                        {language.language === 'zh' ? '中文' : (language.language === 'en' ? 'English' : '家乡话')}
-                    </Dropdown.Button>
-                    <Button.Group className={styles['button-group']}>
-                        <Button onClick={() => { navigate('register') }}>{t("header.register")}</Button>
-                        <Button onClick={() => { navigate('signIn') }}>{t("header.signin")}</Button>
-                    </Button.Group>
-                </div>
-            </div>
+            <HeaderOfHeader navigate={navigate} t={t} language={language} languageChange={languageChange}></HeaderOfHeader>
             <Layout.Header className={styles['main-header']}>
                 <Link to='/'>
                     <img src={logo} alt="润" className={styles['App-logo']} />
@@ -64,7 +47,7 @@ export const Header: React.FC = () => {
                     justifyContent: 'center',
                     background: "linear-gradient(90deg, #00d0d4 50%,  #9effa4 50%)"
                 }}>
-                <Menu mode={"horizontal"} className={styles["main-menu"]}>
+                <Menu mode={"horizontal"} className={styles["main-menu"]} onClick={() => { navigate('/') }}>
                     <Menu.Item key="1">{t("header.home_page")}</Menu.Item>
                     <Menu.Item key="2">{t("header.weekend")}</Menu.Item>
                     <Menu.Item key="3">{t("header.group")}</Menu.Item>

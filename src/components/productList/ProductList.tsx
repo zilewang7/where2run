@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { List, Rate, Space, Image, Tag, Typography } from "antd";
-import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { LikeOutlined, StarOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
@@ -79,12 +79,12 @@ export const ProductList: React.FC<PropsType> = ({
           actions={[
             <IconText
               icon={StarOutlined}
-              text="156"
+              text="114"
               key="list-vertical-star-o"
             />,
             <IconText
               icon={LikeOutlined}
-              text="156"
+              text="514"
               key="list-vertical-like-o"
             />,
             <>
