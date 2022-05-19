@@ -17,16 +17,10 @@ const defaultState: covidData = {
 
 export const getCovidData = createAsyncThunk(
     'covidData/getCovidData',
-    async (_: void, thunkAPI) => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json")
-                thunkAPI.dispatch(fetchSuccess(data));
-            } catch (error: any) {
-                thunkAPI.dispatch(fetchFail(error.message))
-            }
-        }
-        fetchData();
+
+    async () => {
+        const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json")
+        return data;
     }
 )
 
@@ -34,20 +28,22 @@ export const covidDataSlice = createSlice({
     name: 'covidData',
     initialState: defaultState,
     reducers: {
-        fetchSuccess: (_state, action) => {
+
+    },
+    extraReducers: {
+        [getCovidData.fulfilled.type]: (_state, action) => {
             return {
                 covidData: getRank(action.payload),
                 loading: false,
                 error: null
             }
         },
-        fetchFail: (state, action: PayloadAction<string | null>) => {
+        [getCovidData.rejected.type]: (state, action: PayloadAction<string | null>) => {
             state.error = action.payload;
             state.loading = false;
             console.log(state.error)
         }
-    },
+    }
 })
 
-export const { fetchSuccess, fetchFail } = covidDataSlice.actions
 export default covidDataSlice.reducer;
