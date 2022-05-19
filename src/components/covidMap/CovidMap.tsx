@@ -2,27 +2,16 @@ import React, { useEffect } from "react";
 import styles from "./CovidMap.module.css";
 import { Divider, Typography, Table, Spin } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
-import { fetchFail, fetchSuccess, } from "../../redux/reducers/covidDataReducer";
-import { useDispatch } from "react-redux";
-import { useSelector } from "../../redux/hooks";
-import axios from "axios";
+import { getCovidData, } from "../../redux/reducers/covidDataReducer";
+import { useSelectorWithType, useDispatchWithType } from "../../redux/hooks";
 
 const { Column, ColumnGroup } = Table;
 
 export const CovidMap: React.FC = () => {
-    const { covidData, loading, error } = useSelector(state => state.covidData);
-    const dispatch = useDispatch();
-
+    const { covidData, loading, error } = useSelectorWithType(state => state.covidData);
+    const dispatch = useDispatchWithType();
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json")
-                dispatch(fetchSuccess(data));
-            } catch (error: any) {
-                dispatch(fetchFail(error.message))
-            }
-        }
-        fetchData();
+        dispatch(getCovidData());
     }, [dispatch]);
 
     return (

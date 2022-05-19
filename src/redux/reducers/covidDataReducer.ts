@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import axios from "axios";
 import { getRank } from "../../components";
 
 
@@ -13,6 +14,21 @@ const defaultState: covidData = {
     loading: true,
     error: null
 }
+
+export const getCovidData = createAsyncThunk(
+    'covidData/getCovidData',
+    async (_: void, thunkAPI) => {
+        const fetchData = async () => {
+            try {
+                const { data } = await axios.get("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json")
+                thunkAPI.dispatch(fetchSuccess(data));
+            } catch (error: any) {
+                thunkAPI.dispatch(fetchFail(error.message))
+            }
+        }
+        fetchData();
+    }
+)
 
 export const covidDataSlice = createSlice({
     name: 'covidData',

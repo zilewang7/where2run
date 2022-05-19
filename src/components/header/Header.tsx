@@ -8,7 +8,7 @@ import { changeLanguage } from "../../redux/reducers/languageReducer";
 import { useTranslation } from 'react-i18next'
 // import { RootState } from "../../redux/store";
 import { /*useSelector,*/ useDispatch } from 'react-redux'
-import { useSelector } from "../../redux/hooks";
+import { useSelectorWithType } from "../../redux/hooks";
 
 
 export const Header: React.FC = () => {
@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     const dispatch = useDispatch()
 
     const { t } = useTranslation();
-    const language = useSelector((state) => state.language);
+    const language = useSelectorWithType((state) => state.language);
     const languageChange = (e) => {
         dispatch(changeLanguage(e.key));
     }

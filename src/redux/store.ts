@@ -9,8 +9,9 @@ export const store = configureStore({
         language: languageReducer,
         covidData: covidDataReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
+    devTools: true
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = ReturnType<typeof store.dispatch>
+export type AppDispatch = typeof store.dispatch
