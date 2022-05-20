@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './RegisterForm.module.css'
 import { Form, Input, Button, Checkbox } from 'antd';
+import { useNavigate } from 'react-router';
 
 export const RegisterForm = () => {
+    const navigate = useNavigate();
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        navigate('/signIn')
     };
 
     const onFinishFailed = (errorInfo: any) => {
