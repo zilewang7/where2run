@@ -42,7 +42,7 @@ export const UserLayout: React.FC<PropsType> = (props) => {
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>FOOTERFOOTERFOOTERFOOTER</Footer>
+      <Footer style={{ textAlign: "center" }}>FooterFooterFooterFooterFooterFooter</Footer>
     </Layout>
   );
 };

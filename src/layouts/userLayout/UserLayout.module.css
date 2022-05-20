@@ -1,13 +1,13 @@
 .user-layout-container {
     height: 100vh;
-    background-image: url("https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg") !important;
+    background-image: url("https://img.xjh.me/random_img.php?return=302&type=bg") !important;
     background-size: 100% !important;
     background-repeat: no-repeat;
-    background-position: center 110px;
+    background-position: center;
 }
 
 .header {
-    background: transparent !important;
+    /* background: transparent !important; */
 }
 
 
@@ -39,7 +39,7 @@
 .content .top .content-header .title {
     position: relative;
     top: 2px;
-    color: #1890ff;
+    color: #00d0d4;
     font-weight: 600;
     font-size: 33px;
     font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
