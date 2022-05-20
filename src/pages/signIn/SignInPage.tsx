@@ -3,8 +3,7 @@ import { SignInForm } from "../../components";
 import { UserLayout } from "../../layouts/userLayout";
 import styles from "./SignInPage.module.css"
 
-export const SignInPage: React.FC = (props) => {
-    console.log(props)
+export const SignInPage: React.FC = () => {
     return (
         <UserLayout >
             <div className={styles["page-content"]}>

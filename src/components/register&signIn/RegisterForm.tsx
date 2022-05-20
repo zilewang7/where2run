@@ -2,12 +2,21 @@ import React from 'react'
 import styles from './RegisterForm.module.css'
 import { Form, Input, Button } from 'antd';
 import { useNavigate } from 'react-router';
+import { useDispatchWithType } from '../../redux/hooks';
+import { addUser } from '../../redux/reducers/userReducer';
 
 export const RegisterForm = () => {
+    const dispatch = useDispatchWithType()
     const navigate = useNavigate();
+
+
     const onFinish = (values: any) => {
-        console.log('Success:', values);
-        navigate('/signIn')
+        const userInfo = {
+            username: values.username,
+            password: values.password
+        }
+        dispatch(addUser(userInfo));
+        navigate('/signIn');
     };
 
     const onFinishFailed = (errorInfo: any) => {
