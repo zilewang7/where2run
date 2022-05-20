@@ -8,4 +8,4 @@ export * from "./productIntro"
 export * from "./productComments";
 export * from "./filter";
 export * from "./productList";
-export * from "./register&login"
+export * from "./register&signIn"

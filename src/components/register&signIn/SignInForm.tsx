@@ -1,13 +1,13 @@
 import React from 'react'
-import styles from './RegisterForm.module.css'
+import styles from './SignInForm.module.css'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useNavigate } from 'react-router';
 
-export const RegisterForm = () => {
+export const SignInForm = () => {
     const navigate = useNavigate();
     const onFinish = (values: any) => {
         console.log('Success:', values);
-        navigate('/signIn')
+        navigate('/')
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -37,25 +37,6 @@ export const RegisterForm = () => {
                     label="Password"
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
-                >
-                    <Input.Password />
-                </Form.Item>
-
-                <Form.Item
-                    label="Confirm"
-                    name="confirm"
-                    hasFeedback
-                    rules={
-                        [
-                            { required: true, message: 'Please confirm your password!' },
-                            (({ getFieldValue }) => ({
-                                validator(_, values) {
-                                    if (!values || getFieldValue("password") === values)
-                                        return Promise.resolve();
-                                    return Promise.reject("Confirm password wrong!");
-                                }
-                            }))
-                        ]}
                 >
                     <Input.Password />
                 </Form.Item>

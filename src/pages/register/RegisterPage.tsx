@@ -12,7 +12,6 @@ export const RegisterPage: React.FC = () => {
                 </div>
                 <RegisterForm />
             </div>
-
         </UserLayout>
     );
 }
