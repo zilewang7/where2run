@@ -25,7 +25,7 @@ export function HeaderOfHeader(props) {
                 {username ? <>
                     <span style={{ marginRight: "10px" }}>{props.t("header.welcome")}<Typography.Text strong>{username}</Typography.Text></span>
                     <Button onClick={() => {
-                        props.navigate()
+                        props.navigate('shoppingCart')
                     }}>{props.t("header.shoppingCart")}</Button>
                     <Button onClick={() => {
                         props.dispatch(logOut())
