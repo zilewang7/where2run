@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './SignInForm.module.css'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useNavigate } from 'react-router';
+import { useDispatchWithType, useSelectorWithType } from '../../redux/hooks';
+import { logIn } from '../../redux/reducers/userReducer';
 
 export const SignInForm = () => {
+    const { username, userList } = useSelectorWithType(state => state.user);
+    const dispatch = useDispatchWithType();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (username)
+            navigate('/')
+    }, [navigate, username])
+
     const onFinish = (values: any) => {
-        console.log('Success:', values);
-        navigate('/')
+        let usernameTemp;
+        userList.forEach((i) => {
+            if (i.username === values.username && i.password === values.password) {
+                usernameTemp = i.username;
+            }
+        })
+        if (usernameTemp) {
+            dispatch(logIn(values.username));
+        } else {
+            alert("账号或密码错误！");
+        }
     };
 
     const onFinishFailed = (errorInfo: any) => {
