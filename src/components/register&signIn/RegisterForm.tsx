@@ -2,21 +2,33 @@ import React from 'react'
 import styles from './RegisterForm.module.css'
 import { Form, Input, Button } from 'antd';
 import { useNavigate } from 'react-router';
-import { useDispatchWithType } from '../../redux/hooks';
+import { useDispatchWithType, useSelectorWithType } from '../../redux/hooks';
 import { addUser } from '../../redux/reducers/userReducer';
 
 export const RegisterForm = () => {
     const dispatch = useDispatchWithType()
     const navigate = useNavigate();
+    const { userList } = useSelectorWithType(state => state.user);
 
 
     const onFinish = (values: any) => {
-        const userInfo = {
-            username: values.username,
-            password: values.password
+        let sameCheck = false;
+        userList.forEach((i) => {
+            if (i.username === values.username) {
+                sameCheck = true;
+            }
+        })
+
+        if (sameCheck) {
+            alert("此用户名已存在！")
+        } else {
+            const userInfo = {
+                username: values.username,
+                password: values.password
+            }
+            dispatch(addUser(userInfo));
+            navigate('/signIn');
         }
-        dispatch(addUser(userInfo));
-        navigate('/signIn');
     };
 
     const onFinishFailed = (errorInfo: any) => {

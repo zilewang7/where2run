@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
 
     return (
         <div className={styles['app-header']} >
-            <HeaderOfHeader navigate={navigate} t={t} language={language} languageChange={languageChange}></HeaderOfHeader>
+            <HeaderOfHeader navigate={navigate} t={t} language={language} languageChange={languageChange} dispatch={dispatch}></HeaderOfHeader>
             <Layout.Header className={styles['main-header']}>
                 <Link to='/'>
                     <img src={logo} alt="润" className={styles['App-logo']} />

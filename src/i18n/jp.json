@@ -20,7 +20,10 @@
         "enterprise": "エンタープライズツアー",
         "high_end": "ハイエンドゲーム",
         "outdoor": "屋外で遊",
-        "insurance": "保険"
+        "insurance": "保険",
+        "shoppingCart": "ショッピングカート",
+        "signOut": "サインアウト",
+        "welcome": "お帰りなさい "
     },
     "home_page": {
         "hot_recommended": "推奨",
