@@ -32,6 +32,12 @@
 }
 
 
+.addCart {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: block;
+}
+
 
 .product-detail-anchor {
     margin: 0;

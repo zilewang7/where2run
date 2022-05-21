@@ -1,14 +1,27 @@
 import { GlobalOutlined } from '@ant-design/icons';
 import styles from "./Header.module.css"
 import { Typography, Dropdown, Menu, Button } from 'antd';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelectorWithType } from '../../redux/hooks';
 import { logOut } from '../../redux/slices/userSlice';
 
 
 
 export function HeaderOfHeader(props) {
-    const { username } = useSelectorWithType(state => state.user)
+    const { username } = useSelectorWithType(state => state.user);
+    const shoppingCartList = useSelectorWithType(state => state.shoppingCart);
+
+    const [shoppingCart, setShoppingCart] = useState<string[]>([]);
+
+    useEffect(() => {
+        shoppingCartList.forEach((i) => {
+            if (i.username === username) {
+                setShoppingCart(i.ShoppingCart)
+            }
+        })
+    }, [shoppingCartList, username])
+
+
     return (<div className={styles['top-header']}>
         <div className={styles.inner}>
             <Typography.Text>{props.t("header.slogan")}</Typography.Text>
@@ -25,8 +38,8 @@ export function HeaderOfHeader(props) {
                 {username ? <>
                     <span style={{ marginRight: "10px", height: '0' }}>{props.t("header.welcome")}<Typography.Text strong>{username}</Typography.Text></span>
                     <Button onClick={() => {
-                        props.navigate('shoppingCart')
-                    }}>{props.t("header.shoppingCart")}</Button>
+                        props.navigate('/shoppingCart')
+                    }}>{props.t("header.shoppingCart")}({shoppingCart.length})</Button>
                     <Button onClick={() => {
                         props.dispatch(logOut())
                         props.navigate('/')

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./DetailPage.module.css"
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Footer, Header, ProductComments, ProductIntro } from "../../components";
 import { Row, Col, Divider, Typography, Anchor, Button } from "antd";
 import { DatePicker } from 'antd';
@@ -11,6 +11,9 @@ import PNG3 from "../../assets/detailImg/3.png"
 import PNG4 from "../../assets/detailImg/4.png"
 import TS from "../../assets/detailImg/ts.png"
 import { commentMockData } from "./mockup";
+import { ShoppingOutlined } from "@ant-design/icons";
+import { addProduct2ShoppingCart } from "../../redux/slices/shoppingCartSlice";
+import { useDispatchWithType, useSelectorWithType } from "../../redux/hooks";
 
 
 const { Link } = Anchor;
@@ -21,11 +24,14 @@ const { RangePicker } = DatePicker;
 const picSrc = [PNG1, PNG2, PNG3, PNG4];
 
 export const DetailPage: React.FC = (props) => {
-    const id = Object.values(useParams());
+    const navigate = useNavigate()
+    const id = Object.values(useParams())[0];
     useEffect(() => {
         window.scrollTo(0, 0);
-
     }, []);
+    const username = useSelectorWithType(state => state.user.username)
+    const dispatch = useDispatchWithType();
+
     return (
         <>
             <Header />
@@ -44,8 +50,17 @@ export const DetailPage: React.FC = (props) => {
                             pictures={picSrc}
                         /></Col>
                         <Col span={11}>
+                            <Button
+                                type="primary"
+                                danger
+                                className={styles.addCart}
+                                onClick={() => (username ? dispatch(addProduct2ShoppingCart({ username: username, id: id })) : navigate("/signIn"))}
+                            >
+                                <ShoppingOutlined />
+                                加入购物车
+                            </Button>
+                            {/* <div style={{ marginLeft: "20%", display: 'inline-block' }}><Button size="large">立即购买</Button></div> */}
                             <RangePicker open style={{ marginTop: 20 }} />
-                            <div style={{ marginTop: "80%", marginLeft: "65%" }}><Button size="large">立即购买</Button></div>
                         </Col>
                     </Row>
                 </div>

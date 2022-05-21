@@ -35,7 +35,7 @@ const userSlice = createSlice(
             logOut: (state) => {
                 state.username = undefined;
             }
-        }
+        },
     }
 )
 

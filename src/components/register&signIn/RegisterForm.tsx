@@ -27,6 +27,7 @@ export const RegisterForm = () => {
                 password: values.password
             }
             dispatch(addUser(userInfo));
+            alert("注册成功！")
             navigate('/signIn');
         }
     };

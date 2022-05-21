@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import { createStore } from 'redux'
 import languageReducer from './slices/languageSlice';
 import covidDataReducer from './slices/covidDataSlice';
 import userSlice from './slices/userSlice';
+import shoppingCartSlice from './slices/shoppingCartSlice';
 import { actionLog } from './middlewares/actionLog';
 
 export const store = configureStore({
@@ -10,6 +10,7 @@ export const store = configureStore({
         language: languageReducer,
         covidData: covidDataReducer,
         user: userSlice,
+        shoppingCart: shoppingCartSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
     devTools: true
