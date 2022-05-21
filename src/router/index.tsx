@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { DetailPage, HomePage, RegisterPage, SearchPage, ShoppingCartPage, SignInPage } from "../pages";
+import { DetailPage, HomePage, OrderPage, RegisterPage, SearchPage, ShoppingCartPage, SignInPage } from "../pages";
 import { useSelectorWithType } from "../redux/hooks";
 
 
@@ -18,8 +18,16 @@ export const Router = () => {
                 <Route path="search" element={<SearchPage />} />
                 <Route path="search/:keywords" element={<SearchPage />} />
                 {
-                    username ? <Route path="shoppingCart" element={<ShoppingCartPage />} /> :
-                        <Route path="shoppingCart" element={<Navigate to={'/signIn'} />} />
+                    username ?
+                        <>
+                            <Route path="shoppingCart" element={<ShoppingCartPage />} />
+                            <Route path="order" element={<OrderPage />} />
+                        </>
+                        :
+                        <>
+                            <Route path="shoppingCart" element={<Navigate to={'/signIn'} />} />
+                            <Route path="order" element={<Navigate to={'/signIn'} />} />
+                        </>
                 }
                 { // 数据持久化之后修改该代码，与 signPage 有重复判断
                     <Route path="*" element={<h2>迷路了？<a href="/">回到首页</a></h2>} />

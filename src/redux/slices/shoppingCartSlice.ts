@@ -28,7 +28,7 @@ const ShoppingCartSlice = createSlice({
         },
         delProductFShoppingCart: (state, action) => {
             state.forEach((i) => {
-                if (i.username === action.payload.username) {
+                if (i.username === action.payload) {
                     i.ShoppingCart = [];
                 }
             })

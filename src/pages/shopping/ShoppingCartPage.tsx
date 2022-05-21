@@ -1,15 +1,18 @@
 import { Affix, Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { PaymentCard, Product, ProductList } from '../../components'
 import { MainLayout } from '../../layouts/mainLayout'
-import { useSelectorWithType } from '../../redux/hooks'
+import { useDispatchWithType, useSelectorWithType } from '../../redux/hooks'
+import { delProductFShoppingCart } from '../../redux/slices/shoppingCartSlice'
 import styles from './ShoppingCartPage.module.css'
 
 
 export const ShoppingCartPage = () => {
     const { username } = useSelectorWithType(state => state.user);
     const shoppingCartList = useSelectorWithType(state => state.shoppingCart);
-
+    const dispatch = useDispatchWithType()
+    const navigate = useNavigate()
     const [shoppingCart, setShoppingCart] = useState<string[]>([]);
 
     useEffect(() => {
@@ -56,7 +59,13 @@ export const ShoppingCartPage = () => {
                 <Col span={8}>
                     <Affix >
                         <div className={styles['payment-card-container']}>
-                            {/* <PaymentCard /> */}
+                            <PaymentCard
+                                loading={false}
+                                originalPrice={1919810}
+                                price={114514 * shoppingCart.length}
+                                onShoppingCartClear={() => { dispatch(delProductFShoppingCart(username)) }}
+                                onCheckout={() => { navigate('/order') }}
+                            />
                         </div>
                     </Affix>
                 </Col>
