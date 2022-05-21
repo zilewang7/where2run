@@ -3,7 +3,7 @@ import styles from "./Header.module.css"
 import { Typography, Dropdown, Menu, Button } from 'antd';
 import React from 'react'
 import { useSelectorWithType } from '../../redux/hooks';
-import { logOut } from '../../redux/reducers/userReducer';
+import { logOut } from '../../redux/slices/userSlice';
 
 
 
@@ -23,7 +23,7 @@ export function HeaderOfHeader(props) {
             </Dropdown.Button>
             <Button.Group className={styles['button-group']}>
                 {username ? <>
-                    <span style={{ marginRight: "10px" }}>{props.t("header.welcome")}<Typography.Text strong>{username}</Typography.Text></span>
+                    <span style={{ marginRight: "10px", height: '0' }}>{props.t("header.welcome")}<Typography.Text strong>{username}</Typography.Text></span>
                     <Button onClick={() => {
                         props.navigate('shoppingCart')
                     }}>{props.t("header.shoppingCart")}</Button>

@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/icon/run.png';
 import { useNavigate, Link } from 'react-router-dom'
-import { changeLanguage } from "../../redux/reducers/languageReducer";
+import { changeLanguage } from "../../redux/slices/languageSlice";
 import { useTranslation } from 'react-i18next'
 // import { RootState } from "../../redux/store";
 import { /*useSelector,*/ useDispatch } from 'react-redux'

@@ -19,7 +19,7 @@ const defaultState: userState = {
 }
 
 
-const userReducer = createSlice(
+const userSlice = createSlice(
     {
         name: 'user',
         initialState: defaultState,
@@ -39,6 +39,6 @@ const userReducer = createSlice(
     }
 )
 
-export const { addUser, logIn, logOut } = userReducer.actions
+export const { addUser, logIn, logOut } = userSlice.actions
 
-export default userReducer.reducer;
+export default userSlice.reducer;

@@ -3,7 +3,7 @@ import styles from './SignInForm.module.css'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useNavigate } from 'react-router';
 import { useDispatchWithType, useSelectorWithType } from '../../redux/hooks';
-import { logIn } from '../../redux/reducers/userReducer';
+import { logIn } from '../../redux/slices/userSlice';
 
 export const SignInForm = () => {
     const { username, userList } = useSelectorWithType(state => state.user);

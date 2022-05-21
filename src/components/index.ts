@@ -9,3 +9,4 @@ export * from "./productComments";
 export * from "./filter";
 export * from "./productList";
 export * from "./register&signIn"
+export * from "./paymentCard"

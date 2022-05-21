@@ -4,7 +4,7 @@ import logo from '../../assets/icon/run.png';
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "antd";
 import { HeaderOfHeader } from "../../components/header/HeaderOfHeader";
-import { changeLanguage } from "../../redux/reducers/languageReducer";
+import { changeLanguage } from "../../redux/slices/languageSlice";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useSelectorWithType } from "../../redux/hooks";

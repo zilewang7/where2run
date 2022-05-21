@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./CovidMap.module.css";
 import { Divider, Typography, Table, Spin } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
-import { getCovidData, } from "../../redux/reducers/covidDataReducer";
+import { getCovidData, } from "../../redux/slices/covidDataSlice";
 import { useSelectorWithType, useDispatchWithType } from "../../redux/hooks";
 
 const { Column, ColumnGroup } = Table;

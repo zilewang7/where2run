@@ -3,7 +3,7 @@ import styles from './RegisterForm.module.css'
 import { Form, Input, Button } from 'antd';
 import { useNavigate } from 'react-router';
 import { useDispatchWithType, useSelectorWithType } from '../../redux/hooks';
-import { addUser } from '../../redux/reducers/userReducer';
+import { addUser } from '../../redux/slices/userSlice';
 
 export const RegisterForm = () => {
     const dispatch = useDispatchWithType()
