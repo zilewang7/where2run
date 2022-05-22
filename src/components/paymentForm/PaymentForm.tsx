@@ -21,7 +21,7 @@ export const PaymentForm: React.FC = () => {
   const [payment, setPayment] = useState<'card' | 'aliPay' | 'wechatPay'>('card')
 
   const handleInputFocus = (e) => {
-    console.log(e.target.name)
+    // console.log(e.target.name)
     if (e.target.name)
       setState({
         ...state,
@@ -57,16 +57,14 @@ export const PaymentForm: React.FC = () => {
     },
   ]
 
-  const [current, setCurrent] = React.useState('mail');
 
   const onClick: MenuProps['onClick'] = e => {
     setPayment(e.key as 'card' | 'aliPay' | 'wechatPay')
-    setCurrent(e.key);
   };
 
   return (
     <div>
-      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} style={{ backgroundColor: 'rgba(255, 255, 255, 0)', marginTop: 50, marginLeft: 65 }} />
+      <Menu onClick={onClick} selectedKeys={[payment]} mode="horizontal" items={items} style={{ backgroundColor: 'rgba(255, 255, 255, 0)', marginTop: 50, marginLeft: 65 }} />
       {payment === 'card' ?
         <div id="PaymentForm" style={{ marginTop: 30 }}>
           <Cards

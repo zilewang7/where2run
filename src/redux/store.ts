@@ -12,7 +12,7 @@ export const store = configureStore({
         user: userSlice,
         shoppingCart: shoppingCartSlice,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
     devTools: true
 });
 

@@ -41,7 +41,7 @@ export const covidDataSlice = createSlice({
         [getCovidData.rejected.type]: (state, action: PayloadAction<string | null>) => {
             state.error = action.payload;
             state.loading = false;
-            console.log(state.error)
+            // console.log(state.error)
         }
     }
 })

@@ -1,4 +1,5 @@
 import { Input, Layout, Menu, Typography } from "antd";
+import type { MenuProps } from 'antd';
 import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/icon/run.png';
@@ -14,7 +15,6 @@ import { HeaderOfHeader } from "./HeaderOfHeader";
 
 
 
-
 export const Header: React.FC = () => {
     const navigate = useNavigate();
 
@@ -24,6 +24,63 @@ export const Header: React.FC = () => {
     const language = useSelectorWithType((state) => state.language);
     const languageChange = (e) => {
         dispatch(changeLanguage(e.key));
+    }
+
+    const items: MenuProps['items'] = [
+        {
+            label: `${t("header.home_page")}`,
+            key: `home_page`
+        }, {
+            label: `${t("header.weekend")}`,
+            key: `weekend`
+        }, {
+            label: `${t("header.group")}`,
+            key: `group`
+        }, {
+            label: `${t("header.backpack")}`,
+            key: `backpack`
+        }, {
+            label: `${t("header.private")}`,
+            key: `private`
+        }, {
+            label: `${t("header.cruise")}`,
+            key: `cruise`
+        }, {
+            label: `${t("header.hotel")}`,
+            key: `hotel`
+        }, {
+            label: `${t("header.local")}`,
+            key: `local`
+        }, {
+            label: `${t("header.theme")}`,
+            key: `theme`
+        }, {
+            label: `${t("header.custom")}`,
+            key: `custom`
+        }, {
+            label: `${t("header.study")}`,
+            key: `study`
+        }, {
+            label: `${t("header.visa")}`,
+            key: `visa`
+        }, {
+            label: `${t("header.enterprise")}`,
+            key: `enterprise`
+        }, {
+            label: `${t("header.high_end")}`,
+            key: `high_end`
+        }, {
+            label: `${t("header.outdoor")}`,
+            key: `outdoor`
+        }, {
+            label: `${t("header.insurance")}`,
+            key: `insurance`
+        },
+    ]
+    const [current, setCurrent] = React.useState<string>(t("header.home_page"));
+    const onClick: MenuProps['onClick'] = e => {
+        setCurrent(e.key);
+        navigate('/');
     }
 
     return (
@@ -47,7 +104,8 @@ export const Header: React.FC = () => {
                     justifyContent: 'center',
                     background: "linear-gradient(90deg, #00d0d4 50%,  #9effa4 50%)"
                 }}>
-                <Menu mode={"horizontal"} className={styles["main-menu"]} onClick={() => { navigate('/') }}>
+                <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} className={styles["main-menu"]} />
+                {/* <Menu mode={"horizontal"} className={styles["main-menu"]} onClick={() => { navigate('/') }}>
                     <Menu.Item key="1">{t("header.home_page")}</Menu.Item>
                     <Menu.Item key="2">{t("header.weekend")}</Menu.Item>
                     <Menu.Item key="3">{t("header.group")}</Menu.Item>
@@ -64,7 +122,7 @@ export const Header: React.FC = () => {
                     <Menu.Item key="14"> {t("header.high_end")} </Menu.Item>
                     <Menu.Item key="15"> {t("header.outdoor")} </Menu.Item>
                     <Menu.Item key="16"> {t("header.insurance")} </Menu.Item>
-                </Menu>
+                </Menu> */}
             </div>
 
         </div >
