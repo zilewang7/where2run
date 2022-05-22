@@ -2,6 +2,7 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"cSpell.words": [
+		"alipay",
 		"antd",
 		"browserslist",
 		"Cascader",
@@ -9,6 +10,7 @@
 		"middlewares",
 		"reduxjs",
 		"signin",
-		"wdnmd"
+		"wdnmd",
+		"wechat"
 	]
 }

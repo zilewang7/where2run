@@ -60,7 +60,6 @@ export const ShoppingCartPage = () => {
                     <Affix >
                         <div className={styles['payment-card-container']}>
                             <PaymentCard
-                                loading={false}
                                 originalPrice={1919810}
                                 price={114514 * shoppingCart.length}
                                 onShoppingCartClear={() => { dispatch(delProductFShoppingCart(username)) }}

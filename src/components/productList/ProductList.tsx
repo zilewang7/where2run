@@ -25,8 +25,9 @@ interface PropsType {
 }
 
 const listData = (productList: Product[]) =>
-  productList.map((p) => ({
+  productList.map((p, index) => ({
     id: p.id,
+    key: `${p.title}*${index}`,
     title: p.title,
     description: p.description,
     tags: (
@@ -77,7 +78,7 @@ export const ProductList: React.FC<PropsType> = ({
       }
       renderItem={(item) => (
         <List.Item
-          key={item.title}
+          key={item.key}
           actions={[
             <IconText
               icon={StarOutlined}

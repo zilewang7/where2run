@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Skeleton,
   Switch,
@@ -36,7 +36,6 @@ const columns: ColumnsType<Item> = [
 ];
 
 interface PropsType {
-  loading: boolean;
   originalPrice: number;
   price: number;
   onShoppingCartClear: () => void;
@@ -44,12 +43,13 @@ interface PropsType {
 }
 
 export const PaymentCard: React.FC<PropsType> = ({
-  loading,
   originalPrice,
   price,
   onShoppingCartClear,
   onCheckout,
 }) => {
+  const [loading, setLoading] = useState(false);
+
   const paymentData: Item[] = [
     {
       key: 1,
@@ -71,11 +71,22 @@ export const PaymentCard: React.FC<PropsType> = ({
     <Card
       style={{ width: 300, marginTop: 16 }}
       actions={[
-        <Button type="primary" danger onClick={onCheckout} loading={loading}>
+        <Button type="primary" danger onClick={onCheckout} loading={loading} disabled={!price}>
           <CheckCircleOutlined />
           下单支付
         </Button>,
-        <Button onClick={onShoppingCartClear} loading={loading}>
+        <Button onClick={
+          () => {
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false)
+              onShoppingCartClear();
+            }, 800)
+          }
+        }
+          loading={loading}
+          disabled={!price}
+        >
           <DeleteOutlined />
           清空
         </Button>,
