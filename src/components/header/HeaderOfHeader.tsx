@@ -4,11 +4,11 @@ import { Typography, Dropdown, Menu, Button } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { useSelectorWithType } from '../../redux/hooks';
 import { logOut } from '../../redux/slices/userSlice';
-
+import Cookies from 'js-cookie'
 
 
 export function HeaderOfHeader(props) {
-    const { username } = useSelectorWithType(state => state.user);
+    const { username, userList } = useSelectorWithType(state => state.user);
     const shoppingCartList = useSelectorWithType(state => state.shoppingCart);
 
     const [shoppingCart, setShoppingCart] = useState<string[]>([]);
@@ -21,6 +21,15 @@ export function HeaderOfHeader(props) {
         })
     }, [shoppingCartList, username])
 
+    useEffect(() => {
+        if (username)
+            Cookies.set('user', username as any);
+        Cookies.set('userList', userList as any);
+        userList.forEach((i, index) => {
+            Cookies.set(`user${index}`, i.username as any);
+            Cookies.set(`user${index}p`, i.password as any);
+        })
+    }, [userList, username])
 
     return (<div className={styles['top-header']}>
         <div className={styles.inner}>

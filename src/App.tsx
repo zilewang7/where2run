@@ -23,6 +23,9 @@ function App() {
       nowLang = jaJP;
       break;
   }
+  // alert(document.cookie);
+
+
   return (
     <div className={styles.App}>
       <ConfigProvider locale={nowLang}>
