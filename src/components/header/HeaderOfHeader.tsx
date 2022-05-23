@@ -19,17 +19,20 @@ export function HeaderOfHeader(props) {
             }
         })
     }, [shoppingCartList, username])
-
+    let items: any = [];
+    props.language.languageList.forEach((l, index) => {
+        items[index] = {
+            label: l.name,
+            key: l.code
+        }
+    })
 
     return (<div className={styles['top-header']}>
         <div className={styles.inner}>
             <Typography.Text>{props.t("header.slogan")}</Typography.Text>
             <Dropdown.Button style={{
                 marginLeft: 15
-            }} overlay={<Menu onClick={props.languageChange}>
-                {props.language.languageList.map(l => {
-                    return <Menu.Item key={l.code}>{l.name}</Menu.Item>;
-                })}
+            }} overlay={<Menu items={items} onClick={props.languageChange}>
             </Menu>} icon={<GlobalOutlined />}>
                 {props.language.language === 'zh' ? '中文' : props.language.language === 'en' ? 'English' : '家乡话'}
             </Dropdown.Button>
