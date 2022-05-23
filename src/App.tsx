@@ -13,6 +13,7 @@ import { getUserCookie } from './redux/slices/userSlice';
 import { getShopCookie } from './redux/slices/shoppingCartSlice';
 
 function App() {
+  // console.log(process.env.NODE_ENV)
   const dispatch = useDispatchWithType();
   const language = useSelectorWithType(state => state.language);
   const user = useSelectorWithType(state => state.user);
@@ -30,23 +31,23 @@ function App() {
       const shoppingCartStr = Cookies.get('shoppingCart');
       const languageStr = Cookies.get('language');
       if (!!(userStr && shoppingCartStr && languageStr)) {
-        console.log('检测到cookie,读取cookie')
+        // console.log('检测到cookie,读取cookie')
         setCookies({
           user: JSON.parse(userStr),
           shoppingCart: JSON.parse(shoppingCartStr),
           language: JSON.parse(languageStr),
         })
       } else {
-        console.log('未检测到cookie,设置初始cookie')
+        // console.log('未检测到cookie,设置初始cookie')
         Cookies.set('user', JSON.stringify(user))
         Cookies.set('shoppingCart', JSON.stringify(shoppingCart))
         Cookies.set('language', JSON.stringify(language))
       }
     } else {
-      console.log('常规更新cookie:')
-      console.log('user:', user)
-      console.log('shop:', shoppingCart)
-      console.log('lang:', language)
+      // console.log('常规更新cookie:')
+      // console.log('user:', user)
+      // console.log('shop:', shoppingCart)
+      // console.log('lang:', language)
       Cookies.set('user', JSON.stringify(user))
       Cookies.set('shoppingCart', JSON.stringify(shoppingCart))
       Cookies.set('language', JSON.stringify(language))
@@ -55,7 +56,8 @@ function App() {
   }, [cookies, dispatch, ifSet, language, shoppingCart, user])
 
   useEffect(() => {
-    console.log('首次获取到的cookie', cookies);
+    // console.log('首次获取到的cookie', cookies);
+    // log twice
     if (cookies.user)
       dispatch(getUserCookie(cookies.user));
     if (cookies.shoppingCart)
@@ -98,6 +100,8 @@ function App() {
     </div >
   );
 }
+
+// App.whyDidYouRender = true;
 
 export default App;
 
