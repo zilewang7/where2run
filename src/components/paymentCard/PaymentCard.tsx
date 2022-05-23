@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Skeleton,
-  Switch,
   Card,
-  Avatar,
   Button,
   Typography,
-  Space,
-  Tag,
   Table,
 } from "antd";
 import { DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";

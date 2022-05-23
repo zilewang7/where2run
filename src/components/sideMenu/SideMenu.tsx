@@ -1,4 +1,4 @@
-import { AppstoreOutlined, CompassOutlined } from "@ant-design/icons";
+import { CompassOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { sideMenuList } from "./mockup";
@@ -22,38 +22,7 @@ function getItem(
 }
 
 export const SideMenu: React.FC = () => {
-    const [items, setItems] = useState<any[]>(
-        [
-            getItem('Navigation', 'sub2', <AppstoreOutlined />, [
-                getItem('Submenu1', 'sub3', null,
-                    [
-                        getItem('Option 7', '7'),
-                        getItem('Option 8', '8')
-                    ]
-                ),
-                getItem('Submenu2', 'sub3-2', null,
-                    [
-                        getItem('Option 72', '72'),
-                        getItem('Option 82', '82')
-                    ]
-                )
-            ]),
-            getItem('Navigation2', 'sub22', <AppstoreOutlined />, [
-                getItem('Submenu12', 'sub32', null,
-                    [
-                        getItem('Option 721', '721'),
-                        getItem('Option 821', '821')
-                    ]
-                ),
-                getItem('Submenu22', 'sub3-22', null,
-                    [
-                        getItem('Option 722', '722'),
-                        getItem('Option 822', '822')
-                    ]
-                )
-            ]),
-        ],
-    );
+    const [items, setItems] = useState<any[]>([]);
 
 
     useEffect(() => {

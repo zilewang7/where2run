@@ -3,7 +3,7 @@ import languageReducer from './slices/languageSlice';
 import covidDataReducer from './slices/covidDataSlice';
 import userSlice from './slices/userSlice';
 import shoppingCartSlice from './slices/shoppingCartSlice';
-import { actionLog } from './middlewares/actionLog';
+// import { actionLog } from './middlewares/actionLog';
 
 export const store = configureStore({
     reducer: {

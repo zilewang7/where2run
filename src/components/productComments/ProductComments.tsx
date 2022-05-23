@@ -1,6 +1,6 @@
 import { List, Comment } from 'antd'
 import React from 'react'
-import styles from './ProductComments.module.css'
+// import styles from './ProductComments.module.css'
 
 interface PropsType {
     data: {

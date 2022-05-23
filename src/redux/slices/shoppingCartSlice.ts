@@ -33,6 +33,11 @@ const ShoppingCartSlice = createSlice({
                 }
             })
         },
+        getShopCookie: (state, action) => {
+            action.payload.forEach((i, index) => {
+                state[index] = i;
+            })
+        }
     },
     extraReducers: {
         //环形引用，添加用户时自动为用户添加购物车
@@ -46,5 +51,5 @@ const ShoppingCartSlice = createSlice({
 })
 
 
-export const { addProduct2ShoppingCart, delProductFShoppingCart } = ShoppingCartSlice.actions
+export const { addProduct2ShoppingCart, delProductFShoppingCart, getShopCookie } = ShoppingCartSlice.actions
 export default ShoppingCartSlice.reducer;

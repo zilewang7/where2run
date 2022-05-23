@@ -33,8 +33,7 @@ const columns: ColumnsType<OrderItem> = [
 interface PropsType {
 }
 
-export const CheckOutCard: React.FC<PropsType> = ({
-}) => {
+export const CheckOutCard: React.FC<PropsType> = () => {
   const username = useSelectorWithType(state => state.user.username);
   const shoppingCartList = useSelectorWithType(state => state.shoppingCart);
   const [loading, setLoading] = useState(false);
