@@ -26,7 +26,7 @@ export const languageSlice = createSlice({
             i18n.changeLanguage(action.payload);
             state.language = action.payload;
         },
-        getLanguageCookie: (_, action) => {
+        getLanguageLocalStorage: (_, action) => {
             i18n.changeLanguage(action.payload.language);
             return {
                 ...action.payload
@@ -35,5 +35,5 @@ export const languageSlice = createSlice({
     }
 })
 
-export const { changeLanguage, getLanguageCookie } = languageSlice.actions;
+export const { changeLanguage, getLanguageLocalStorage } = languageSlice.actions;
 export default languageSlice.reducer;

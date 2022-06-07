@@ -35,7 +35,7 @@ const userSlice = createSlice(
             logOut: (state) => {
                 state.username = undefined;
             },
-            getUserCookie: (_, action) => {
+            getUserLocalStorage: (_, action) => {
                 return {
                     ...action.payload
                 }
@@ -44,6 +44,6 @@ const userSlice = createSlice(
     }
 )
 
-export const { addUser, logIn, logOut, getUserCookie } = userSlice.actions
+export const { addUser, logIn, logOut, getUserLocalStorage } = userSlice.actions
 
 export default userSlice.reducer;

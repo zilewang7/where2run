@@ -33,7 +33,7 @@ const ShoppingCartSlice = createSlice({
                 }
             })
         },
-        getShopCookie: (state, action) => {
+        getShopLocalStorage: (state, action) => {
             action.payload.forEach((i, index) => {
                 state[index] = i;
             })
@@ -51,5 +51,5 @@ const ShoppingCartSlice = createSlice({
 })
 
 
-export const { addProduct2ShoppingCart, delProductFShoppingCart, getShopCookie } = ShoppingCartSlice.actions
+export const { addProduct2ShoppingCart, delProductFShoppingCart, getShopLocalStorage } = ShoppingCartSlice.actions
 export default ShoppingCartSlice.reducer;

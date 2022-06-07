@@ -7,10 +7,9 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import jaJP from 'antd/lib/locale/ja_JP';
 import { ConfigProvider } from 'antd';
 import { useDispatchWithType, useSelectorWithType } from './redux/hooks';
-import Cookies from 'js-cookie';
-import { getLanguageCookie } from './redux/slices/languageSlice';
-import { getUserCookie } from './redux/slices/userSlice';
-import { getShopCookie } from './redux/slices/shoppingCartSlice';
+import { getLanguageLocalStorage } from './redux/slices/languageSlice';
+import { getUserLocalStorage } from './redux/slices/userSlice';
+import { getShopLocalStorage } from './redux/slices/shoppingCartSlice';
 
 function App() {
   // console.log(process.env.NODE_ENV)
@@ -18,53 +17,53 @@ function App() {
   const language = useSelectorWithType(state => state.language);
   const user = useSelectorWithType(state => state.user);
   const shoppingCart = useSelectorWithType(state => state.shoppingCart);
-  const [cookies, setCookies] = useState<any>({
+
+  const [ifSet, setIfSet] = useState<boolean>(false);
+
+  const [localStorages, setLocalStorages] = useState<any>({
     user: undefined,
     shoppingCart: undefined,
     language: undefined,
   })
-  const [ifSet, setIfSet] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!ifSet) {
-      const userStr = Cookies.get('user');
-      const shoppingCartStr = Cookies.get('shoppingCart');
-      const languageStr = Cookies.get('language');
+    if (!ifSet) {//首次进入
+      //获取localStorage
+      const userStr = localStorage.getItem('user');
+      const shoppingCartStr = localStorage.getItem('shoppingCart');
+      const languageStr = localStorage.getItem('language');
+      //如果已有,转换为对象
       if (!!(userStr && shoppingCartStr && languageStr)) {
-        // console.log('检测到cookie,读取cookie')
-        setCookies({
+        setLocalStorages({
           user: JSON.parse(userStr),
           shoppingCart: JSON.parse(shoppingCartStr),
           language: JSON.parse(languageStr),
         })
       } else {
-        // console.log('未检测到cookie,设置初始cookie')
-        Cookies.set('user', JSON.stringify(user))
-        Cookies.set('shoppingCart', JSON.stringify(shoppingCart))
-        Cookies.set('language', JSON.stringify(language))
+        //没有则初始化
+        localStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+        localStorage.setItem('language', JSON.stringify(language))
       }
-    } else {
-      // console.log('常规更新cookie:')
-      // console.log('user:', user)
-      // console.log('shop:', shoppingCart)
-      // console.log('lang:', language)
-      Cookies.set('user', JSON.stringify(user))
-      Cookies.set('shoppingCart', JSON.stringify(shoppingCart))
-      Cookies.set('language', JSON.stringify(language))
+      setIfSet(true);//标记初始化完成
+    } else {//状态更新
+      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+      localStorage.setItem('language', JSON.stringify(language))
     }
-    setIfSet(true);
-  }, [cookies, dispatch, ifSet, language, shoppingCart, user])
+  }, [ifSet, language, shoppingCart, user])
 
-  useEffect(() => {
-    // console.log('首次获取到的cookie', cookies);
-    // log twice
-    if (cookies.user)
-      dispatch(getUserCookie(cookies.user));
-    if (cookies.shoppingCart)
-      dispatch(getShopCookie(cookies.shoppingCart));
-    if (cookies.language)
-      dispatch(getLanguageCookie(cookies.language));
-  }, [cookies, dispatch])
+
+  useEffect(() => {//根据获取到的LocalStorage改变状态
+    if (localStorages.user)
+      dispatch(getUserLocalStorage(localStorages.user));
+    if (localStorages.shoppingCart)
+      dispatch(getShopLocalStorage(localStorages.shoppingCart));
+    if (localStorages.language)
+      dispatch(getLanguageLocalStorage(localStorages.language));
+  }, [localStorages, dispatch])
+
+
 
   const [nowLang, setNowLang] = useState<any>();
   useEffect(() => {
